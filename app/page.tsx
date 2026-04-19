@@ -353,49 +353,139 @@ function PricingCTA() {
 function FAQ() {
   const items = [
     {
+      tag: "Service",
       q: "Is this a tuition or coaching service?",
       a: "No. We give you one detailed diagnostic and a single consultation. We don't run ongoing classes. If we think your child needs a tutor, we'll say so — and we won't try to sell you one.",
     },
     {
+      tag: "For your child",
       q: "Will the test stress my child out?",
-      a: "We've designed it not to. There's no pass/fail, no time pressure, and the framing is explicit: this is to understand how they think, not to grade them.",
+      a: "We've designed it not to. There's no pass/fail, no time pressure, and the framing is explicit from the first screen: this is to understand how they think, not to grade them.",
     },
     {
+      tag: "For your child",
+      q: "Can my child take it on a phone?",
+      a: "Technically yes, but we strongly recommend a laptop or tablet. The diagnostic is ~40 minutes of focused thinking — a small screen makes that harder than it needs to be.",
+    },
+    {
+      tag: "Curriculum",
       q: "What boards does this work for?",
       a: "All of them. The questions test underlying math concepts (place value, fractions, ratio, geometry, word problems), not curriculum-specific facts. Works for CBSE, ICSE, State boards, and IB.",
     },
     {
+      tag: "The report",
       q: "Who reviews the report?",
-      a: "Our founder, an experienced math educator. Every report is read, edited, and signed off by a person before it reaches you. The AI drafts; the human decides.",
+      a: "Our founder — an experienced math educator. Every report is read, edited, and signed off by a person before it reaches you. The AI drafts; the human decides.",
     },
     {
+      tag: "The report",
       q: "When do I get the report?",
-      a: "Within 1–2 days of your child completing the test.",
+      a: "Within 1–2 days of your child completing the test. We'll email you the moment it's ready, along with a Cal.com link to book your 30-minute call.",
     },
   ];
+
   return (
-    <section id="faq" className="relative z-10 mx-auto max-w-3xl px-6 py-20 md:py-28 border-t border-hunch-line">
-      <div className="text-xs uppercase tracking-widest text-hunch-muted">
-        Common questions
-      </div>
-      <h2 className="headline text-3xl md:text-5xl mt-3">
-        Things parents <span className="serif-i text-hunch-accent">often ask.</span>
-      </h2>
-      <div className="mt-10 divide-y divide-hunch-line">
-        {items.map((it) => (
-          <details
-            key={it.q}
-            className="group py-5 cursor-pointer"
-          >
-            <summary className="flex items-center justify-between gap-6 list-none">
-              <span className="font-medium tracking-tight text-[17px]">{it.q}</span>
-              <span className="text-hunch-muted shrink-0 transition group-open:rotate-45 text-2xl leading-none">+</span>
-            </summary>
-            <p className="mt-3 text-[15px] text-hunch-ink/70 leading-relaxed">
-              {it.a}
+    <section
+      id="faq"
+      className="relative z-10 mx-auto max-w-6xl px-6 py-20 md:py-28 border-t border-hunch-line"
+    >
+      <div className="grid md:grid-cols-12 gap-10 md:gap-14">
+        {/* LEFT: sticky heading + contact card */}
+        <div className="md:col-span-4">
+          <div className="md:sticky md:top-12">
+            <div className="text-xs uppercase tracking-widest text-hunch-muted">
+              FAQ
+            </div>
+            <h2 className="headline text-4xl md:text-5xl mt-3">
+              Things parents{" "}
+              <span className="serif-i text-hunch-accent">often ask.</span>
+            </h2>
+            <p className="mt-5 text-[15px] text-hunch-ink/70 leading-relaxed max-w-sm">
+              The short version: this is one diagnostic, one report, one
+              conversation. No ongoing commitments.
             </p>
-          </details>
-        ))}
+
+            <div className="mt-8 rounded-2xl border border-hunch-line bg-hunch-card p-5 relative overflow-hidden">
+              <div
+                aria-hidden
+                className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(27, 58, 47, 0.10), transparent 70%)",
+                }}
+              />
+              <div className="relative">
+                <div className="flex items-center gap-2 text-xs text-hunch-muted">
+                  <span className="w-1.5 h-1.5 rounded-full bg-hunch-accent" />
+                  Still wondering
+                </div>
+                <div className="font-medium tracking-tight mt-2 text-[17px]">
+                  Ask us directly.
+                </div>
+                <p className="mt-1 text-sm text-hunch-ink/70 leading-relaxed">
+                  We&apos;re a small team. Real reply, usually within a day.
+                </p>
+                <a
+                  href="mailto:hello@hunch.in"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-hunch-accent group/email"
+                >
+                  hello@hunch.in
+                  <span className="transition-transform group-hover/email:translate-x-0.5">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT: questions as numbered cards */}
+        <ul className="md:col-span-8 space-y-3">
+          {items.map((it, i) => (
+            <li key={it.q}>
+              <details className="group rounded-2xl border border-hunch-line bg-hunch-card hover:border-hunch-ink/20 transition-colors open:border-hunch-ink/25 open:bg-white">
+                <summary className="flex items-start gap-4 md:gap-6 p-5 md:p-6 list-none cursor-pointer select-none">
+                  <span
+                    className="font-serif text-2xl leading-none w-8 shrink-0 text-hunch-accent/50 group-open:text-hunch-accent transition-colors pt-0.5"
+                    aria-hidden
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[10px] uppercase tracking-widest text-hunch-muted">
+                      {it.tag}
+                    </div>
+                    <div className="mt-1 font-medium tracking-tight text-[17px] md:text-[18px] text-hunch-ink">
+                      {it.q}
+                    </div>
+                  </div>
+                  <span
+                    className="shrink-0 mt-1 w-8 h-8 rounded-full border border-hunch-line flex items-center justify-center text-hunch-muted group-open:bg-hunch-ink group-open:text-hunch-paper group-open:border-hunch-ink transition-colors"
+                    aria-hidden
+                  >
+                    <svg
+                      width="11"
+                      height="11"
+                      viewBox="0 0 11 11"
+                      fill="none"
+                      className="transition-transform duration-300 group-open:rotate-45"
+                    >
+                      <path
+                        d="M5.5 1v9M1 5.5h9"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-5 md:px-6 pb-5 md:pb-6 pl-[60px] md:pl-[80px] -mt-1">
+                  <p className="text-[15px] text-hunch-ink/75 leading-relaxed max-w-prose">
+                    {it.a}
+                  </p>
+                </div>
+              </details>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

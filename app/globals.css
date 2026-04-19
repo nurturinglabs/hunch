@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-hunch-paper text-hunch-ink antialiased font-sans;
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Subtle layered background — warm radial highlight + faint grain */
+.bg-canvas {
+  background-color: #F4F1EA;
+  background-image:
+    radial-gradient(1200px 600px at 80% -10%, rgba(196, 90, 58, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 0% 100%, rgba(27, 58, 47, 0.08), transparent 60%);
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.headline {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+
+.serif-i {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-style: italic;
+}
+
+/* Report preview card */
+.preview-card {
+  box-shadow:
+    0 1px 0 rgba(21, 20, 15, 0.06),
+    0 30px 60px -20px rgba(21, 20, 15, 0.18),
+    0 12px 24px -12px rgba(21, 20, 15, 0.12);
+}
+
+/* Render-time prose for the parent report page */
+.prose-report h1 { @apply headline text-3xl mt-0 mb-4; }
+.prose-report h2 { @apply headline text-2xl mt-10 mb-3; }
+.prose-report h3 { @apply font-semibold text-base mt-6 mb-2 tracking-tight; }
+.prose-report p  { @apply leading-relaxed mb-4 text-[15px]; }
+.prose-report ul { @apply list-disc pl-6 mb-4; }
+.prose-report li { @apply mb-1; }
+.prose-report strong { @apply font-semibold; }
+
+/* CTA */
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-full bg-hunch-ink text-hunch-paper px-6 py-3 text-[15px] font-medium transition;
+}
+.btn-primary:hover {
+  background: #2a2820;
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  @apply inline-flex items-center gap-2 rounded-full px-5 py-3 text-[15px] font-medium text-hunch-ink hover:bg-hunch-ink/[0.04] transition;
+}
+
+/* Numbered marker used in "How it works" */
+.numeral {
+  font-family: var(--font-serif), serif;
+  font-size: 2.25rem;
+  line-height: 1;
+  color: #1B3A2F;
+}

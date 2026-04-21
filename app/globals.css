@@ -57,6 +57,15 @@ body {
 .prose-report li { @apply mb-1; }
 .prose-report strong { @apply font-semibold; }
 
+/* Subtle breathing glow for radial accents on dark CTAs */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.06); }
+}
+.pulse-glow {
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
 /* CTA */
 .btn-primary {
   @apply inline-flex items-center gap-2 rounded-full bg-hunch-ink text-hunch-paper px-6 py-3 text-[15px] font-medium transition;

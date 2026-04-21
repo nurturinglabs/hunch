@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Nav, Footer } from "@/components/SiteChrome";
+import { Reveal } from "@/components/Reveal";
 
 export default function AboutPage() {
   return (
@@ -22,21 +23,40 @@ export default function AboutPage() {
 function Hero() {
   return (
     <section className="relative z-10 mx-auto max-w-5xl px-6 pt-20 pb-16 md:pt-28 md:pb-20">
-      <div className="inline-flex items-center gap-2 rounded-full border border-hunch-ink/10 bg-hunch-card px-3 py-1 text-xs text-hunch-muted">
+      <div
+        className="inline-flex items-center gap-2 rounded-full border border-hunch-ink/10 bg-hunch-card px-3 py-1 text-xs text-hunch-muted animate-fade-up"
+        style={{ animationDelay: "0ms" }}
+      >
         <span className="w-1.5 h-1.5 rounded-full bg-hunch-warm" />
         Why Hunch exists
       </div>
       <h1 className="headline text-[44px] md:text-[72px] mt-6 leading-[1.02] max-w-[20ch]">
-        Your child is doing fine.
+        <span
+          className="inline-block animate-fade-up"
+          style={{ animationDelay: "120ms" }}
+        >
+          Your child is doing fine.
+        </span>
         <br />
-        <span className="serif-i text-hunch-accent">Fine at what, exactly?</span>
+        <span
+          className="serif-i text-hunch-accent inline-block animate-fade-up"
+          style={{ animationDelay: "320ms" }}
+        >
+          Fine at what, exactly?
+        </span>
       </h1>
-      <p className="mt-8 text-lg md:text-xl text-hunch-ink/75 leading-relaxed max-w-[60ch]">
+      <p
+        className="mt-8 text-lg md:text-xl text-hunch-ink/75 leading-relaxed max-w-[60ch] animate-fade-up"
+        style={{ animationDelay: "520ms" }}
+      >
         School reports summarise. Tuition fees reward. Neither of them tells
         you what your child actually understands — or where the quiet gaps
         are that will start to matter in two years.
       </p>
-      <p className="mt-4 text-lg md:text-xl text-hunch-ink/75 leading-relaxed max-w-[60ch]">
+      <p
+        className="mt-4 text-lg md:text-xl text-hunch-ink/75 leading-relaxed max-w-[60ch] animate-fade-up"
+        style={{ animationDelay: "680ms" }}
+      >
         Hunch is a one-time, independent checkup that fills that gap.
       </p>
     </section>
@@ -49,7 +69,7 @@ function FineAtWhat() {
   return (
     <section className="relative z-10 mx-auto max-w-6xl px-6 py-16 md:py-24 border-t border-hunch-line">
       <div className="grid md:grid-cols-12 gap-10">
-        <div className="md:col-span-4">
+        <Reveal className="md:col-span-4">
           <div className="text-xs uppercase tracking-widest text-hunch-muted">
             The gap parents don&apos;t see
           </div>
@@ -60,24 +80,30 @@ function FineAtWhat() {
             Three patterns we see over and over. If any of these feel
             familiar, you&apos;re the reason we built this.
           </p>
-        </div>
+        </Reveal>
 
         <div className="md:col-span-8 space-y-5">
-          <Vignette
-            score="18/20"
-            title="Rohan aced his fractions test."
-            body="When asked to explain, he says: &ldquo;I just add the top numbers and keep the bottom the same.&rdquo; He&apos;s been rewarded for a procedure he doesn&apos;t understand. This will not survive Class 7."
-          />
-          <Vignette
-            score="Top of class"
-            title="Anika flies through arithmetic."
-            body="She freezes on any word problem longer than two sentences. Her tuition teacher says: &ldquo;she just needs more practice.&rdquo; That&apos;s a symptom, not a diagnosis."
-          />
-          <Vignette
-            score="Was the smart one"
-            title="Ishaan is suddenly falling behind."
-            body="He was the strong one in Class 6. Then Class 8 algebra hit and nothing makes sense to him. The gap was there in Class 5 — decimals, ratios, something small. Nobody looked, because nobody had a reason to."
-          />
+          <Reveal delay={80}>
+            <Vignette
+              score="18/20"
+              title="Rohan aced his fractions test."
+              body="When asked to explain, he says: &ldquo;I just add the top numbers and keep the bottom the same.&rdquo; He&apos;s been rewarded for a procedure he doesn&apos;t understand. This will not survive Class 7."
+            />
+          </Reveal>
+          <Reveal delay={200}>
+            <Vignette
+              score="Top of class"
+              title="Anika flies through arithmetic."
+              body="She freezes on any word problem longer than two sentences. Her tuition teacher says: &ldquo;she just needs more practice.&rdquo; That&apos;s a symptom, not a diagnosis."
+            />
+          </Reveal>
+          <Reveal delay={320}>
+            <Vignette
+              score="Was the smart one"
+              title="Ishaan is suddenly falling behind."
+              body="He was the strong one in Class 6. Then Class 8 algebra hit and nothing makes sense to him. The gap was there in Class 5 — decimals, ratios, something small. Nobody looked, because nobody had a reason to."
+            />
+          </Reveal>
         </div>
       </div>
     </section>
@@ -94,7 +120,7 @@ function Vignette({
   body: string;
 }) {
   return (
-    <article className="rounded-2xl border border-hunch-line bg-hunch-card p-6 md:p-7 flex flex-col md:flex-row gap-6">
+    <article className="group rounded-2xl border border-hunch-line bg-hunch-card p-6 md:p-7 flex flex-col md:flex-row gap-6 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-hunch-ink/20 hover:shadow-[0_20px_40px_-24px_rgba(21,20,15,0.18)]">
       <div className="md:w-40 shrink-0">
         <div className="text-[10px] uppercase tracking-widest text-hunch-muted">
           On paper
@@ -121,44 +147,56 @@ function WhyNowMatters() {
     <section className="relative z-10 border-t border-hunch-line">
       <div className="bg-hunch-accent/[0.04]">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 grid md:grid-cols-12 gap-10 items-start">
-          <div className="md:col-span-5">
+          <Reveal className="md:col-span-5">
             <div className="text-xs uppercase tracking-widest text-hunch-accent">
               Why this age, why now
             </div>
             <h2 className="headline text-3xl md:text-5xl mt-3 leading-[1.05]">
               Class 5 and 6 is the <span className="serif-i">last quiet moment</span> in math.
             </h2>
-          </div>
+          </Reveal>
           <div className="md:col-span-7 space-y-6 text-[16px] text-hunch-ink/80 leading-relaxed">
-            <p>
-              This is when math starts to abstract. Whole numbers become
-              fractions, fractions become decimals, decimals become ratios.
-              The jump from &ldquo;how many apples&rdquo; to &ldquo;3/4 of an
-              apple&rdquo; sounds small. It isn&apos;t.
-            </p>
-            <p>
-              This is also the age where the gap first opens between{" "}
-              <span className="serif-i text-hunch-accent">
-                can follow the procedure
-              </span>{" "}
-              and{" "}
-              <span className="serif-i text-hunch-accent">
-                understands the concept
-              </span>
-              . A child who can follow procedures looks fine on tests for
-              another year or two. Then algebra arrives and the scaffolding
-              collapses.
-            </p>
-            <p>
-              By Class 8, these gaps are buried under newer material and
-              painful to unwind — tutors, lost confidence, sometimes a
-              permanent dislike of math. Catching them in Class 5 or 6 takes
-              an hour and a report. Catching them in Class 9 takes a year.
-            </p>
+            <Reveal delay={100} as="div">
+              <p>
+                This is when math starts to abstract. Whole numbers become
+                fractions, fractions become decimals, decimals become ratios.
+                The jump from &ldquo;how many apples&rdquo; to &ldquo;3/4 of an
+                apple&rdquo; sounds small. It isn&apos;t.
+              </p>
+            </Reveal>
+            <Reveal delay={200} as="div">
+              <p>
+                This is also the age where the gap first opens between{" "}
+                <span className="serif-i text-hunch-accent">
+                  can follow the procedure
+                </span>{" "}
+                and{" "}
+                <span className="serif-i text-hunch-accent">
+                  understands the concept
+                </span>
+                . A child who can follow procedures looks fine on tests for
+                another year or two. Then algebra arrives and the scaffolding
+                collapses.
+              </p>
+            </Reveal>
+            <Reveal delay={300} as="div">
+              <p>
+                By Class 8, these gaps are buried under newer material and
+                painful to unwind — tutors, lost confidence, sometimes a
+                permanent dislike of math. Catching them in Class 5 or 6 takes
+                an hour and a report. Catching them in Class 9 takes a year.
+              </p>
+            </Reveal>
             <div className="mt-8 grid grid-cols-3 gap-5 pt-6 border-t border-hunch-accent/20">
-              <TimelineStat when="Class 5–6" what="One hour to catch a gap" tone="good" />
-              <TimelineStat when="Class 7–8" what="A term of catching up" tone="warn" />
-              <TimelineStat when="Class 9+" what="A year of remediation" tone="alert" />
+              <Reveal delay={400}>
+                <TimelineStat when="Class 5–6" what="One hour to catch a gap" tone="good" />
+              </Reveal>
+              <Reveal delay={550}>
+                <TimelineStat when="Class 7–8" what="A term of catching up" tone="warn" />
+              </Reveal>
+              <Reveal delay={700}>
+                <TimelineStat when="Class 9+" what="A year of remediation" tone="alert" />
+              </Reveal>
             </div>
           </div>
         </div>
@@ -213,31 +251,32 @@ function WhatHonestLooksLike() {
   ];
   return (
     <section className="relative z-10 mx-auto max-w-6xl px-6 py-20 md:py-28 border-t border-hunch-line">
-      <div className="text-xs uppercase tracking-widest text-hunch-muted">
-        What makes this different
-      </div>
-      <h2 className="headline text-3xl md:text-5xl mt-3 max-w-3xl leading-[1.05]">
-        What an honest checkup <span className="serif-i text-hunch-accent">looks like.</span>
-      </h2>
+      <Reveal>
+        <div className="text-xs uppercase tracking-widest text-hunch-muted">
+          What makes this different
+        </div>
+        <h2 className="headline text-3xl md:text-5xl mt-3 max-w-3xl leading-[1.05]">
+          What an honest checkup <span className="serif-i text-hunch-accent">looks like.</span>
+        </h2>
+      </Reveal>
 
       <div className="mt-12 grid md:grid-cols-3 gap-5">
-        {pillars.map((p) => (
-          <div
-            key={p.label}
-            className="rounded-2xl border border-hunch-line bg-hunch-card p-6 md:p-7 relative overflow-hidden"
-          >
-            <div className="text-[10px] uppercase tracking-widest text-hunch-muted">
-              {p.label}
+        {pillars.map((p, i) => (
+          <Reveal key={p.label} delay={120 + i * 140}>
+            <div className="rounded-2xl border border-hunch-line bg-hunch-card p-6 md:p-7 relative overflow-hidden h-full transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-hunch-ink/20 hover:shadow-[0_20px_40px_-24px_rgba(21,20,15,0.18)]">
+              <div className="text-[10px] uppercase tracking-widest text-hunch-muted">
+                {p.label}
+              </div>
+              <h3
+                className="font-medium tracking-tight text-[18px] mt-2"
+                dangerouslySetInnerHTML={{ __html: p.title }}
+              />
+              <p
+                className="mt-3 text-[15px] text-hunch-ink/70 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: p.body }}
+              />
             </div>
-            <h3
-              className="font-medium tracking-tight text-[18px] mt-2"
-              dangerouslySetInnerHTML={{ __html: p.title }}
-            />
-            <p
-              className="mt-3 text-[15px] text-hunch-ink/70 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: p.body }}
-            />
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
@@ -249,30 +288,38 @@ function WhatHonestLooksLike() {
 function WhoWeAre() {
   return (
     <section className="relative z-10 mx-auto max-w-4xl px-6 py-20 md:py-28 border-t border-hunch-line">
-      <div className="text-xs uppercase tracking-widest text-hunch-muted">
-        Who we are
-      </div>
-      <h2 className="headline text-3xl md:text-5xl mt-3 leading-[1.05]">
-        Why we built <span className="serif-i text-hunch-accent">Hunch.</span>
-      </h2>
+      <Reveal>
+        <div className="text-xs uppercase tracking-widest text-hunch-muted">
+          Who we are
+        </div>
+        <h2 className="headline text-3xl md:text-5xl mt-3 leading-[1.05]">
+          Why we built <span className="serif-i text-hunch-accent">Hunch.</span>
+        </h2>
+      </Reveal>
       <div className="mt-8 space-y-5 text-[17px] text-hunch-ink/80 leading-relaxed">
-        <p>
-          We&apos;re a small team at Nurturing Labs. We kept meeting parents
-          who knew something was slightly off with their child&apos;s math —
-          a test score that looked fine, but an instinct that didn&apos;t —
-          and had no way to check.
-        </p>
-        <p>
-          There wasn&apos;t a service they could buy that gave them an
-          expert, neutral read. Schools are busy. Tuition centres are
-          biased. Online practice apps rank your child; they don&apos;t
-          understand them. So we built the thing we wished existed: an
-          independent diagnostic, priced for one-time use, reviewed by a
-          real educator, with a conversation at the end.
-        </p>
-        <p>
-          Not a subscription. Not a tutoring funnel. A checkup.
-        </p>
+        <Reveal delay={120}>
+          <p>
+            We&apos;re a small team at Nurturing Labs. We kept meeting parents
+            who knew something was slightly off with their child&apos;s math —
+            a test score that looked fine, but an instinct that didn&apos;t —
+            and had no way to check.
+          </p>
+        </Reveal>
+        <Reveal delay={220}>
+          <p>
+            There wasn&apos;t a service they could buy that gave them an
+            expert, neutral read. Schools are busy. Tuition centres are
+            biased. Online practice apps rank your child; they don&apos;t
+            understand them. So we built the thing we wished existed: an
+            independent diagnostic, priced for one-time use, reviewed by a
+            real educator, with a conversation at the end.
+          </p>
+        </Reveal>
+        <Reveal delay={320}>
+          <p className="serif-i text-hunch-accent text-xl">
+            Not a subscription. Not a tutoring funnel. A checkup.
+          </p>
+        </Reveal>
       </div>
     </section>
   );
@@ -283,38 +330,43 @@ function WhoWeAre() {
 function ClosingCTA() {
   return (
     <section className="relative z-10 mx-auto max-w-6xl px-6 py-20 md:py-24">
-      <div className="rounded-3xl bg-hunch-ink text-hunch-paper p-8 md:p-14 grid md:grid-cols-12 gap-8 items-center overflow-hidden relative">
-        <div
-          aria-hidden
-          className="absolute -left-20 -bottom-20 w-[420px] h-[420px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(27, 58, 47, 0.5), transparent 60%)",
-          }}
-        />
-        <div className="md:col-span-7 relative">
-          <h2 className="headline text-3xl md:text-5xl leading-[1.05]">
-            Get a real read on where <span className="serif-i">your child stands.</span>
-          </h2>
-          <p className="mt-4 text-hunch-paper/75 max-w-md leading-relaxed">
-            One hour. One report. One conversation. ₹1,999, once.
-          </p>
+      <Reveal>
+        <div className="rounded-3xl bg-hunch-ink text-hunch-paper p-8 md:p-14 grid md:grid-cols-12 gap-8 items-center overflow-hidden relative">
+          <div
+            aria-hidden
+            className="absolute -left-20 -bottom-20 w-[420px] h-[420px] rounded-full pulse-glow"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(27, 58, 47, 0.5), transparent 60%)",
+            }}
+          />
+          <div className="md:col-span-7 relative">
+            <h2 className="headline text-3xl md:text-5xl leading-[1.05]">
+              Get a real read on where <span className="serif-i">your child stands.</span>
+            </h2>
+            <p className="mt-4 text-hunch-paper/75 max-w-md leading-relaxed">
+              One hour. One report. One conversation. ₹1,999, once.
+            </p>
+          </div>
+          <div className="md:col-span-5 relative">
+            <Link
+              href="/signup"
+              className="group block rounded-2xl bg-hunch-paper text-hunch-ink px-6 py-5 text-center text-base font-medium hover:bg-white transition-[transform,background-color] hover:-translate-y-0.5"
+            >
+              <span className="inline-flex items-center gap-2">
+                Book the assessment
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </span>
+            </Link>
+            <Link
+              href="/#how"
+              className="mt-3 block text-center text-sm text-hunch-paper/60 hover:text-hunch-paper"
+            >
+              or see how it works
+            </Link>
+          </div>
         </div>
-        <div className="md:col-span-5 relative">
-          <Link
-            href="/signup"
-            className="block rounded-2xl bg-hunch-paper text-hunch-ink px-6 py-5 text-center text-base font-medium hover:bg-white transition"
-          >
-            Book the assessment →
-          </Link>
-          <Link
-            href="/#how"
-            className="mt-3 block text-center text-sm text-hunch-paper/60 hover:text-hunch-paper"
-          >
-            or see how it works
-          </Link>
-        </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
